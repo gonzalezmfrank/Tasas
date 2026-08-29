@@ -21,84 +21,85 @@
             "market": "parallel",
             "type": "parallel",
             "base": "USD",
-            "mid": 932.953058,
-            "updated_at": "2026-08-28T04:01:54.063Z"
+            "mid": 918.806401,
+            "updated_at": "2026-08-29T15:01:02.225Z"
         },
         {
             "market": "binance",
             "type": "p2p",
-            "ask": 941,
-            "bid": 936,
-            "mid": 938.5,
-            "updated_at": "2026-08-28T08:53:55Z"
+            "ask": 936,
+            "bid": 937.02,
+            "mid": 936.51,
+            "updated_at": "2026-08-29T15:18:21Z"
         },
         {
             "market": "bingx",
             "type": "p2p",
-            "ask": 954.89,
-            "bid": 935.9,
-            "mid": 945.395,
-            "updated_at": "2026-08-28T08:54:08Z"
+            "ask": 943,
+            "bid": 931.7,
+            "mid": 937.35,
+            "updated_at": "2026-08-29T15:18:09Z"
         },
         {
             "market": "bitget",
             "type": "p2p",
-            "ask": 943,
-            "bid": 934,
-            "mid": 938.5,
-            "updated_at": "2026-08-28T08:54:44Z"
+            "ask": 942,
+            "bid": 933,
+            "mid": 937.5,
+            "updated_at": "2026-08-29T15:18:38Z"
         },
         {
             "market": "bybit",
             "type": "p2p",
-            "ask": 944.997,
-            "bid": 937,
-            "mid": 940.9984999999999,
-            "updated_at": "2026-08-28T08:54:28Z"
+            "ask": 942.1,
+            "bid": 935,
+            "mid": 938.55,
+            "updated_at": "2026-08-29T15:18:54Z"
         },
         {
             "market": "mexc",
             "type": "p2p",
-            "ask": 950,
-            "bid": 934,
-            "mid": 942,
-            "updated_at": "2026-08-28T08:54:33Z"
+            "ask": 939,
+            "bid": 930.21,
+            "mid": 934.605,
+            "updated_at": "2026-08-29T15:18:13Z"
         },
         {
             "market": "okx",
             "type": "p2p",
-            "ask": 951.99,
-            "bid": 930.1,
-            "mid": 941.0450000000001,
-            "updated_at": "2026-08-28T08:54:25Z"
+            "ask": 940.999,
+            "bid": 935.02,
+            "mid": 938.0095,
+            "updated_at": "2026-08-29T15:18:21Z"
         },
         {
             "market": "saldo",
             "type": "p2p",
-            "ask": 949.244,
-            "bid": 911.4878,
-            "mid": 930.3659,
-            "updated_at": "2026-08-28T08:54:26Z"
+            "ask": 943.5561,
+            "bid": 922.8627,
+            "mid": 933.2094,
+            "updated_at": "2026-08-29T15:18:35Z"
         }
     ],
     "index": {
-        "value": 894.5899,
+        "value": 932.0518,
         "version": "v1",
-        "as_of": "2026-08-28T08:55:21.52704981Z",
+        "as_of": "2026-08-29T15:19:00.577186721Z",
         "weights": {
-            "bcv": 0.3,
-            "p2p": 0.5,
-            "paralelo": 0.2
+            "bcv": 0,
+            "p2p": 0.7142857142857143,
+            "paralelo": 0.28571428571428575
         },
         "components": {
-            "bcv": 791.6667,
-            "p2p": 940.9984999999999,
-            "paralelo": 932.953058
+            "p2p": 937.35,
+            "paralelo": 918.806401
         },
-        "p2p_median": 940.9984999999999,
+        "p2p_median": 937.35,
         "p2p_count": 7,
-        "flags": {},
+        "flags": {
+            "bcv_stale": true
+        },
         "methodology_url": "https://cotizave.com/docs/cotizave-index"
     },
-    "fetched_at": "2026-08-28T08:55:21.52704981Z"
+    "fetched_at": "2026-08-29T15:19:00.577186721Z"
 }
