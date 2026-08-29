@@ -1,0 +1,104 @@
+{
+    "country": "VE",
+    "currency": "VES",
+    "base": "USD",
+    "rates": [
+        {
+            "market": "reference",
+            "type": "reference",
+            "base": "USD",
+            "mid": 791.6667,
+            "updated_at": "2026-08-28T04:00:00Z"
+        },
+        {
+            "market": "eur_reference",
+            "type": "reference",
+            "base": "EUR",
+            "mid": 921.88003881,
+            "updated_at": "2026-08-28T04:00:00Z"
+        },
+        {
+            "market": "parallel",
+            "type": "parallel",
+            "base": "USD",
+            "mid": 932.953058,
+            "updated_at": "2026-08-28T04:01:54.063Z"
+        },
+        {
+            "market": "binance",
+            "type": "p2p",
+            "ask": 941,
+            "bid": 936,
+            "mid": 938.5,
+            "updated_at": "2026-08-28T08:53:55Z"
+        },
+        {
+            "market": "bingx",
+            "type": "p2p",
+            "ask": 954.89,
+            "bid": 935.9,
+            "mid": 945.395,
+            "updated_at": "2026-08-28T08:54:08Z"
+        },
+        {
+            "market": "bitget",
+            "type": "p2p",
+            "ask": 943,
+            "bid": 934,
+            "mid": 938.5,
+            "updated_at": "2026-08-28T08:54:44Z"
+        },
+        {
+            "market": "bybit",
+            "type": "p2p",
+            "ask": 944.997,
+            "bid": 937,
+            "mid": 940.9984999999999,
+            "updated_at": "2026-08-28T08:54:28Z"
+        },
+        {
+            "market": "mexc",
+            "type": "p2p",
+            "ask": 950,
+            "bid": 934,
+            "mid": 942,
+            "updated_at": "2026-08-28T08:54:33Z"
+        },
+        {
+            "market": "okx",
+            "type": "p2p",
+            "ask": 951.99,
+            "bid": 930.1,
+            "mid": 941.0450000000001,
+            "updated_at": "2026-08-28T08:54:25Z"
+        },
+        {
+            "market": "saldo",
+            "type": "p2p",
+            "ask": 949.244,
+            "bid": 911.4878,
+            "mid": 930.3659,
+            "updated_at": "2026-08-28T08:54:26Z"
+        }
+    ],
+    "index": {
+        "value": 894.5899,
+        "version": "v1",
+        "as_of": "2026-08-28T08:55:21.52704981Z",
+        "weights": {
+            "bcv": 0.3,
+            "p2p": 0.5,
+            "paralelo": 0.2
+        },
+        "components": {
+            "bcv": 791.6667,
+            "p2p": 940.9984999999999,
+            "paralelo": 932.953058
+        },
+        "p2p_median": 940.9984999999999,
+        "p2p_count": 7,
+        "flags": {},
+        "methodology_url": "https://cotizave.com/docs/cotizave-index"
+    },
+    "fetched_at": "2026-08-28T08:55:21.52704981Z"
+}
