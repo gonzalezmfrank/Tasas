@@ -1,4 +1,5 @@
-import os,requests,sys,json
+import os,requests,sys,json,datetime
+from datetime import date, time, datetime, timedelta
 
 from KEY import CLAVE
 from KEY import URL
@@ -17,20 +18,47 @@ bcv = requests.get(
 
 data = bcv.json()
 
+## Selecciona los datos y crea un json con el resultado del dia
+
+fecha_alp=data["index"]["as_of"]
+
+# print("La fecha valor es : ",fecha_alp)
+
+dt = datetime.fromisoformat(fecha_alp)
+
+for orden in data["rates"]:
+	if orden["type"]=="reference":
+		if orden["base"]=="USD":
+			usd=orden["mid"]
+			print("Valor del Dolar : ",orden["mid"])
+		elif orden["base"]=="EUR":
+			eur=orden["mid"]
+			# print("Valor del Euro : ",orden["mid"])
+
+NVOJSON = {
+
+	"fecha" : datetime.strftime(dt,"%d/%m/%Y"),
+	"USD" : usd,
+	"EUR" :eur
+
+}
+
+print("el contenido del JSon seria :",NVOJSON)
+
+
 ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
 
 try:
 	with open(ARCHIVO,"r+", encoding="utf-8") as f:
 		f.seek(0)
 		f.truncate() 
-		json.dump(data, f, indent=4, ensure_ascii=False)
+		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
 except FileNotFoundError:
 	with open(ARCHIVO,"w",encoding="utf-8") as f:
 		print("archivo no existia ... fue creado")
-		json.dump(data, f, indent=4, ensure_ascii=False)
+		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
 else:
-	print("el resultado es:",data)
-	print(f"Total de rates: {len(data['rates'])}")
+	print("archivo ya existia ... fue actualizado")
 
 # Crea el json con los valores de la fecha
 
