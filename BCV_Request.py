@@ -47,7 +47,7 @@ print("el contenido del JSon seria :",NVOJSON)
 
 
 ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
-
+print("Y se va a guardar en :",ARCHIVO)
 try:
 	with open(ARCHIVO,"r+", encoding="utf-8") as f:
 		f.seek(0)
