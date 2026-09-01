@@ -1,3 +1,6 @@
+# Lee el archvivo historico de excel para generar el json desde ese archivo
+# solo se ejecuta para el json original -- NO SE DEBE EJECUTAR MAS
+
 import pandas as pd
 from openpyxl import load_workbook
 

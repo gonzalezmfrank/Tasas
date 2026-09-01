@@ -1,3 +1,6 @@
+# Ejecuta el script para obtener el valor del dolar y euro en bolivares y lo guarda en un archivo json
+# Solo guarda alli la data necesaria fecha, dolar y euro
+
 import os,requests,sys,json,datetime,platform
 from datetime import date, time, datetime, timedelta
 
