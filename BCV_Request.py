@@ -1,4 +1,4 @@
-import os,requests,sys,json,datetime
+import os,requests,sys,json,datetime,platform
 from datetime import date, time, datetime, timedelta
 
 from KEY import CLAVE
@@ -7,6 +7,7 @@ from KEY import ARCHIVO
 from KEY import ARCHIVO2
 
 from pathlib import Path
+from sys import platform
 
 #print("el API Key es :",CLAVE)
 ##print("el URL es :",URL)
@@ -30,7 +31,7 @@ for orden in data["rates"]:
 	if orden["type"]=="reference":
 		if orden["base"]=="USD":
 			usd=orden["mid"]
-			print("Valor del Dolar : ",orden["mid"])
+			#print("Valor del Dolar : ",orden["mid"])
 		elif orden["base"]=="EUR":
 			eur=orden["mid"]
 			# print("Valor del Euro : ",orden["mid"])
@@ -45,9 +46,19 @@ NVOJSON = {
 
 print("el contenido del JSon seria :",NVOJSON)
 
+if platform == "linux" or platform == "linux2":
+    # linux
+	ARCHIVO ="/opt/SanLucas/Tasas/" + ARCHIVO2
+elif platform == "darwin":
+    # OS X
+    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
+elif platform == "win32":
+	# Para Windows
+    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
 
-ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
-print("Y se va a guardar en :",ARCHIVO)
+# ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
+print("Y se va a guardar en la ruta :",Path.cwd(),"Para el sistema operativo :",platform)
+
 try:
 	with open(ARCHIVO,"r+", encoding="utf-8") as f:
 		f.seek(0)
