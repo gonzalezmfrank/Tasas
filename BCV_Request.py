@@ -26,7 +26,7 @@ data = bcv.json()
 
 fecha_alp=data["index"]["as_of"]
 
-# print("La fecha valor es : ",fecha_alp)
+print("La fecha valor es : ",fecha_alp)
 
 dt = datetime.fromisoformat(fecha_alp)
 
@@ -39,9 +39,12 @@ for orden in data["rates"]:
 			eur=orden["mid"]
 			# print("Valor del Euro : ",orden["mid"])
 
+
+# "fecha" : datetime.strftime(dt,"%d/%m/%Y"),
+
 NVOJSON = {
 
-	"fecha" : datetime.strftime(dt,"%d/%m/%Y"),
+	"fecha" : dt.strftime("%d/%m/%Y"),
 	"USD" : usd,
 	"EUR" :eur
 

@@ -9,7 +9,7 @@ from datetime import date, time, datetime, timedelta
 
 # 1. Lee el archivo json historico principal (Tasas.json)
 with open("Tasas.json", "r") as main_file:
-    main_data = json.load(main_file)  # This loads a Python list or dict
+    main_data = json.load(main_file)  
 
 # 2. Lee el archivo json de respuesta del script BCV_Request.py (Respuesta.json)
 with open("Respuesta.json", "r") as other_file:
@@ -29,18 +29,22 @@ fecha = datetime.strptime(other_data["fecha"],"%d/%m/%Y")
 if fecha > Last_fecha:
     print("Se debe incluir un nuevo registro en el archivo Tasas.json")
     # Crear un nuevo registro con la información de Respuesta.json
+    #Last_fecha = Last_fecha.strftime("%x")
+    #fecha = fecha.strftime("%x")
+    fecha_proceso = datetime.now()
     new_record = {
-        "Fecha_Proceso": datetime.now().isoformat(),
+        "Fecha_Proceso": fecha_proceso.isoformat(),
         "Fecha_Valor": fecha.isoformat(),
         "USD": usd,
         "EUR": eur,
     }
+
+    print("Nuevo registro a agregar: ", new_record)
     
     # Agregar el nuevo registro al historial principal
     main_data.append(new_record)
     
     # Guardar los cambios en el archivo Tasas.json
     with open("Tasas.json", "w") as main_file:
-        json.dump(main_data, main_file, indent=4)
-    
+        json.dump(main_data, main_file, indent=4,ensure_ascii=False,default=str)    
     print("Nuevo registro agregado a Tasas.json")

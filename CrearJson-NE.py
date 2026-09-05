@@ -51,8 +51,8 @@ def read_excel_tables(file_path):
 #df.to_json('datos.json', orient='records', force_ascii=False, indent=4)
 
 #print('Archivo JSON creado con éxito.')
-all_tables = read_excel_tables("Tasas.xlsx")
+all_tables = read_excel_tables("CopiaTasas.xlsx")
 print(all_tables["Tasas"])
 json_data = all_tables["Tasas"].to_json(orient='records', force_ascii=False, indent=4, date_format='iso')
-with open('Tasas.json', 'w', encoding='utf-8') as f:
+with open('Tasaspp.json', 'w', encoding='utf-8') as f:
     f.write(json_data)
