@@ -52,30 +52,30 @@ NVOJSON = {
 
 print("el contenido del JSon seria :",NVOJSON)
 
-if platform == "linux" or platform == "linux2":
-    # linux
-	ARCHIVO ="/opt/SanLucas/Tasas/" + ARCHIVO2
-elif platform == "darwin":
+#if platform == "linux" or platform == "linux2":
+#    # linux
+#	ARCHIVO ="/opt/SanLucas/Tasas/" + ARCHIVO2
+#elif platform == "darwin":
     # OS X
-    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
-elif platform == "win32":
+#    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
+#elif platform == "win32":
 	# Para Windows
-    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
+#    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
 
 # ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
-print("Y se va a guardar en la ruta :",Path.cwd(),"Para el sistema operativo :",platform)
+#print("Y se va a guardar en la ruta :",Path.cwd(),"Para el sistema operativo :",platform)
 
-try:
-	with open(ARCHIVO,"r+", encoding="utf-8") as f:
-		f.seek(0)
-		f.truncate() 
-		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
-except FileNotFoundError:
-	with open(ARCHIVO,"w",encoding="utf-8") as f:
-		print("archivo no existia ... fue creado")
-		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
-else:
-	print("archivo ya existia ... fue actualizado")
+#try:
+#	with open(ARCHIVO,"r+", encoding="utf-8") as f:
+#		f.seek(0)
+#		f.truncate() 
+#		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
+#except FileNotFoundError:
+#	with open(ARCHIVO,"w",encoding="utf-8") as f:
+#		print("archivo no existia ... fue creado")
+#		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
+#else:
+#	print("archivo ya existia ... fue actualizado")
 
 # Crea el json con los valores de la fecha
 
@@ -90,8 +90,8 @@ with open("Tasas.json", "r") as main_file:
     main_data = json.load(main_file)  
 
 # 2. Lee el archivo json de respuesta del script BCV_Request.py (Respuesta.json)
-with open("Respuesta.json", "r") as other_file:
-    other_data = json.load(other_file)
+#with open("Respuesta.json", "r") as other_file:
+#    other_data = json.load(other_file)
 
 print("ultimo registro historico: ", main_data[-1])
 print("Valor de Fecha del ultimo registro historico: ", main_data[-1]["Fecha_Proceso"])
@@ -100,9 +100,9 @@ Last_fecha = datetime.fromisoformat(main_data[-1]["Fecha_Proceso"])
 
 # toma la informacion del nuevo registro a ser evaluado
 
-eur = other_data["EUR"]
-usd = other_data["USD"]
-fecha = datetime.strptime(other_data["fecha"],"%d/%m/%Y")
+eur = NVOJSON["EUR"]
+usd = NVOJSON["USD"]
+fecha = datetime.strptime(NVOJSON["fecha"],"%d/%m/%Y")
 
 if fecha > Last_fecha:
     print("Se debe incluir un nuevo registro en el archivo Tasas.json")
