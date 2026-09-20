@@ -2,6 +2,7 @@
 # Solo guarda alli la data necesaria fecha, dolar y euro
 
 import os,requests,sys,json,datetime,platform
+from zoneinfo import ZoneInfo
 from datetime import date, time, datetime, timedelta
 
 from KEY import CLAVE
@@ -11,6 +12,13 @@ from KEY import ARCHIVO2
 
 from pathlib import Path
 from sys import platform
+
+# Creador de un codificador personalizado para JSON
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat()  # Mantiene los 6 decimales de precisión
+        return super().default(obj)
 
 #print("el API Key es :",CLAVE)
 ##print("el URL es :",URL)
@@ -41,41 +49,16 @@ for orden in data["rates"]:
 
 
 # "fecha" : datetime.strftime(dt,"%d/%m/%Y"),
-
+#"fecha" : datetime.strftime(dt,"%d/%m/%Y %H:%M:%S"),
 NVOJSON = {
 
-	"fecha" : dt.strftime("%d/%m/%Y"),
+	"fecha" : fecha_alp,
 	"USD" : usd,
 	"EUR" :eur
 
 }
 
 print("el contenido del JSon seria :",NVOJSON)
-
-#if platform == "linux" or platform == "linux2":
-#    # linux
-#	ARCHIVO ="/opt/SanLucas/Tasas/" + ARCHIVO2
-#elif platform == "darwin":
-    # OS X
-#    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
-#elif platform == "win32":
-	# Para Windows
-#    ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
-
-# ARCHIVO =str(Path.cwd())+"\\" + ARCHIVO2
-#print("Y se va a guardar en la ruta :",Path.cwd(),"Para el sistema operativo :",platform)
-
-#try:
-#	with open(ARCHIVO,"r+", encoding="utf-8") as f:
-#		f.seek(0)
-#		f.truncate() 
-#		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
-#except FileNotFoundError:
-#	with open(ARCHIVO,"w",encoding="utf-8") as f:
-#		print("archivo no existia ... fue creado")
-#		json.dump(NVOJSON, f, indent=4, ensure_ascii=False)
-#else:
-#	print("archivo ya existia ... fue actualizado")
 
 # Crea el json con los valores de la fecha
 
@@ -89,10 +72,6 @@ print("el contenido del JSon seria :",NVOJSON)
 with open("Tasas.json", "r") as main_file:
     main_data = json.load(main_file)  
 
-# 2. Lee el archivo json de respuesta del script BCV_Request.py (Respuesta.json)
-#with open("Respuesta.json", "r") as other_file:
-#    other_data = json.load(other_file)
-
 print("ultimo registro historico: ", main_data[-1])
 print("Valor de Fecha del ultimo registro historico: ", main_data[-1]["Fecha_Proceso"])
 
@@ -102,7 +81,15 @@ Last_fecha = datetime.fromisoformat(main_data[-1]["Fecha_Proceso"])
 
 eur = NVOJSON["EUR"]
 usd = NVOJSON["USD"]
-fecha = datetime.strptime(NVOJSON["fecha"],"%d/%m/%Y")
+fecha = datetime.fromisoformat(NVOJSON["fecha"])
+print("Fecha que viene del API del BCV: ", fecha)
+Last_fecha = Last_fecha.replace(tzinfo=ZoneInfo("America/Caracas"))
+fecha = fecha.replace(tzinfo=ZoneInfo("America/Caracas"))
+#fecha = json.dumps(NVOJSON["fecha"], cls=DateTimeEncoder, indent=4)
+print("Valor de Fecha del nuevo registro a evaluar: ", fecha)
+#fecha = json.dumps(fecha, cls=DateTimeEncoder, indent=4)
+#print("fecha el BCV nva: ", fecha)
+
 
 if fecha > Last_fecha:
     print("Se debe incluir un nuevo registro en el archivo Tasas.json")
@@ -110,6 +97,7 @@ if fecha > Last_fecha:
     #Last_fecha = Last_fecha.strftime("%x")
     #fecha = fecha.strftime("%x")
     fecha_proceso = datetime.now()
+    fecha = fecha.replace(tzinfo=None)
     new_record = {
         "Fecha_Proceso": fecha_proceso.isoformat(),
         "Fecha_Valor": fecha.isoformat(),
