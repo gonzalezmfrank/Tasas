@@ -1,7 +1,7 @@
 # Ejecuta el script para obtener el valor del dolar y euro en bolivares y lo guarda en un archivo json
 # Solo guarda alli la data necesaria fecha, dolar y euro
 
-import os,requests,sys,json,datetime,platform
+import os,requests,sys,json,datetime,platform,csv
 from zoneinfo import ZoneInfo
 from datetime import date, time, datetime, timedelta
 
@@ -114,3 +114,22 @@ if fecha > Last_fecha:
     with open("Tasas.json", "w") as main_file:
         json.dump(main_data, main_file, indent=4,ensure_ascii=False,default=str)    
     print("Nuevo registro agregado a Tasas.json")
+
+    # Guardar el nuevo registro en un archivo CSV
+    csv_file_path = "Tasas.csv"
+    file_exists = os.path.isfile(csv_file_path)
+
+    with open(csv_file_path, mode='a', newline='') as csv_file:
+        fieldnames = ["Fecha_Proceso", "Fecha_Valor", "USD", "EUR"]
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        # Escribir encabezados si el archivo no existe
+        if not file_exists:
+            writer.writeheader()
+
+        # Escribir el nuevo registro en el archivo CSV
+        writer.writerow(new_record)
+    print("Nuevo registro agregado a Tasas.csv")
+else:
+    print("No se debe incluir un nuevo registro en el archivo Tasas.json")
+    

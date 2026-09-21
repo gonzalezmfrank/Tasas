@@ -1,9 +1,12 @@
 COTIZAVE_API_KEY
 __pycache__
-Tasas.xlsx
 Crearjson-NE.py
 Prueba.py
 Respuesta.json
 CopiaTasas.xlsx
 output.xlsx
 BCV-SCR.py
+jsontocsv.py
+Tasas.csv
+Tasas.xlsx
+Tasas.json
