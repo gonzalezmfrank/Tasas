@@ -11,7 +11,9 @@ from KEY import ARCHIVO
 from KEY import ARCHIVO2
 
 from pathlib import Path
-from sys import platform
+#from sys import platform
+
+sistema = platform.system()
 
 # Creador de un codificador personalizado para JSON
 class DateTimeEncoder(json.JSONEncoder):
@@ -69,7 +71,17 @@ print("el contenido del JSon seria :",NVOJSON)
 #
 
 # 1. Lee el archivo json historico principal (Tasas.json)
-with open("Tasas.json", "r") as main_file:
+
+if sistema == "Windows":
+    new_archivo = "Tasas.json"
+elif sistema == "Linux":
+    new_archivo = ARCHIVO + "Tasas.json"
+else:
+    print(f"Sistema operativo '{sistema}' no soportado.")
+
+print("ruta del archivo Tasas.json: ", new_archivo)
+
+with open(new_archivo, "r") as main_file:
     main_data = json.load(main_file)  
 
 print("ultimo registro historico: ", main_data[-1])
@@ -111,7 +123,8 @@ if fecha > Last_fecha:
     main_data.append(new_record)
     
     # Guardar los cambios en el archivo Tasas.json
-    with open("Tasas.json", "w") as main_file:
+
+    with open(new_archivo, "w") as main_file:
         json.dump(main_data, main_file, indent=4,ensure_ascii=False,default=str)    
     print("Nuevo registro agregado a Tasas.json")
 
@@ -131,5 +144,5 @@ if fecha > Last_fecha:
         writer.writerow(new_record)
     print("Nuevo registro agregado a Tasas.csv")
 else:
-    print("No se debe incluir un nuevo registro en el archivo Tasas.json")
+    print("No se debe incluir un nuevo registro en el archivo Tasas.csv")
     
