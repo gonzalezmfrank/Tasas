@@ -145,4 +145,5 @@ if fecha > Last_fecha:
     print("Nuevo registro agregado a Tasas.csv")
 else:
     print("No se debe incluir un nuevo registro en el archivo Tasas.csv")
-    
+
+print("Fin del script de actualizacion de Tasas.json y Tasas.csv")
