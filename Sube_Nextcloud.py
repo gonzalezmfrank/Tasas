@@ -7,9 +7,9 @@ USERNAME = "fgonzalez"
 APP_PASSWORD = "YkAWs-68GaA-HDEPz-jfjzb-DfMNZ"
 
 # Paths
-LOCAL_FILE_PATH = "Tasas.json"
+LOCAL_FILE_PATH = "Tasas.xls"
 # Note: Ensure the target directory exists on Nextcloud
-REMOTE_FILE_PATH = "Documents/_Tasas/Tasas.json" 
+REMOTE_FILE_PATH = "Documents/_Tasas/Tasas.xlsx" 
 
 # --- EXECUTION ---
 def upload_or_update_nextcloud_file(local_path, remote_path):

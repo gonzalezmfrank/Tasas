@@ -1,7 +1,6 @@
 COTIZAVE_API_KEY
 __pycache__
 Crearjson-NE.py
-Prueba.py
 Respuesta.json
 CopiaTasas.xlsx
 output.xlsx
@@ -10,3 +9,5 @@ jsontocsv.py
 Tasas.csv
 Tasas.xlsx
 test.py
+Tasas.json
+Prueba.py

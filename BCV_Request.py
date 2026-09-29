@@ -128,22 +128,5 @@ if fecha > Last_fecha:
         json.dump(main_data, main_file, indent=4,ensure_ascii=False,default=str)    
     print("Nuevo registro agregado a Tasas.json")
 
-    # Guardar el nuevo registro en un archivo CSV
-    csv_file_path = "Tasas.csv"
-    file_exists = os.path.isfile(csv_file_path)
 
-    with open(csv_file_path, mode='a', newline='') as csv_file:
-        fieldnames = ["Fecha_Proceso", "Fecha_Valor", "USD", "EUR"]
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-        # Escribir encabezados si el archivo no existe
-        if not file_exists:
-            writer.writeheader()
-
-        # Escribir el nuevo registro en el archivo CSV
-        writer.writerow(new_record)
-    print("Nuevo registro agregado a Tasas.csv")
-else:
-    print("No se debe incluir un nuevo registro en el archivo Tasas.csv")
-
-print("Fin del script de actualizacion de Tasas.json y Tasas.csv")
+print("Fin del script de actualizacion de Tasas.json")
