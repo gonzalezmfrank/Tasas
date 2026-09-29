@@ -7,7 +7,7 @@ USERNAME = "fgonzalez"
 APP_PASSWORD = "YkAWs-68GaA-HDEPz-jfjzb-DfMNZ"
 
 # Paths
-LOCAL_FILE_PATH = "Tasas.xls"
+LOCAL_FILE_PATH = "/opt/SanLucas/Tasas/Tasas.xls"
 # Note: Ensure the target directory exists on Nextcloud
 REMOTE_FILE_PATH = "Documents/_Tasas/Tasas.xlsx" 
 
