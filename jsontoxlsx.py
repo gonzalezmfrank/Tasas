@@ -43,7 +43,7 @@ def json_a_excel(json_file, excel_file):
 # Ejemplo de uso
 if __name__ == "__main__":
     try:
-        json_a_excel("Tasas.json", "Tasas.xlsx")
+        json_a_excel("/opt/SanLucas/Tasas/Tasas.json", "/opt/SanLucas/Tasas/Tasas.xlsx")
     except Exception as e:
         print(f"Error: {e}")
 
